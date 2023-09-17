@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Laptop Price Predictor</title>
+</head>
+<body>
+    <h1>Laptop Price Predictor</h1>
+    <form method="POST">
+        <label for="Company">Company:</label>
+        <input type="text" name="Company" required><br>
+        <label for="TypeName">Type Name:</label>
+        <input type="text" name="TypeName" required><br>
+        <label for="Ram">RAM (GB):</label>
+        <input type="number" name="Ram" required><br>
+        <label for="Weight">Weight (kg):</label>
+        <input type="number" step="0.01" name="Weight" required><br>
+        <label for="Touchscreen">Touchscreen:</label>
+        <input type="radio" name="Touchscreen" value="1">Yes
+        <input type="radio" name="Touchscreen" value="0" checked>No<br>
+        <label for="Ips">IPS Display:</label>
+        <input type="radio" name="Ips" value="1">Yes
+        <input type="radio" name="Ips" value="0" checked>No<br>
+        <label for="ppi">PPI:</label>
+        <input type="number" step="0.01" name="ppi" required><br>
+        <label for="CpuBrand">CPU Brand:</label>
+        <input type="text" name="CpuBrand" required><br>
+        <label for="GpuBrand">GPU Brand:</label>
+        <input type="text" name="GpuBrand" required><br>
+        <label for="OS">Operating System:</label>
+        <input type="text" name="OS" required><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if predicted_price is not none %}
+    <p>Predicted Price: Rs{{ predicted_price }}</p>
+    {% endif %}
+</body>
+</html>
